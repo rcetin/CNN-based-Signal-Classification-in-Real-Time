@@ -1,4 +1,4 @@
-Convolutional Neural Networks {#appendix}
+Convolutional Neural Networks
 =============================
 
 Convolutional neural networks (CNNs) are specialized neural networks for
@@ -13,7 +13,7 @@ extract features, and a flatten layer is preferred to create vector
 forms of feature maps before the classification part of the network
 architecture.
 
-CNN Layers {#CNN_layers}
+CNN Layers
 ----------
 
 ### Convolution Layer
@@ -21,35 +21,35 @@ CNN Layers {#CNN_layers}
 The convolution layer is based on a discrete convolution process.
 Discrete convolution is given as the following;
 
-<img src="https://latex.codecogs.com/svg.latex?y[t]%20=%20%20\sum_{a%20=%20-\infty%20}^{\infty%20}%20x[a]%20w[t-a]"> 
+<img src="https://latex.codecogs.com/svg.latex?y[t]%20=%20%20\sum_{a%20=%20-\infty%20}^{\infty%20}%20x[a]%20w[t-a]">,
 
-where $x$ is the input and $w$ is the kernel that shifts through the information in the
-input and kernel the parts that are summation to it and exclude the rest. Input data of convolution layers are generally multidimensional arrays. A convolution operator depends on tensor shape can be implemented in more dimension. The two-dimensional that is employed in our study can be defined as below
+where <img src="https://latex.codecogs.com/svg.latex?x"> is the input and <img src="https://latex.codecogs.com/svg.latex?w"> is the kernel that shifts through the information in the input and kernel the parts that are summation to it and exclude the rest. Input data of convolution layers are generally multidimensional arrays. A convolution operator depends on tensor shape can be implemented in more dimension. The two-dimensional that is employed in our study can be defined as below
 
-<img src="https://latex.codecogs.com/svg.latex?Y[k,l]%20=%20%20\sum_{a_1%20=%20-%20\infty%20}^{%20\infty%20}%20\sum_{a_2%20=%20-%20\infty%20}^{\infty%20}%20X[k%20-a_1,%20l-a_2]%20W[%20a_1,%20a_2]">
+<img src="https://latex.codecogs.com/svg.latex?Y[k,l]%20=%20%20\sum_{a_1%20=%20-%20\infty%20}^{%20\infty%20}%20\sum_{a_2%20=%20-%20\infty%20}^{\infty%20}%20X[k%20-a_1,%20l-a_2]%20W[%20a_1,%20a_2]">,
 
-where <img src="https://latex.codecogs.com/svg.latex?X_{n_1xn_2}"> represents two dimensional input matrix and <img src="https://latex.codecogs.com/svg.latex?W_{m_1xm_2}"> is a kernel matrix with <img src="https://latex.codecogs.com/svg.latex?m_1%20\leqslant%20n_1$%20and%20$m_2%20\leqslant%20%20n_2">. The main goal of the convolution operator usage is to reduce the input image to its essential features. A feature map is produced by sliding the convolution filter over the input signal. The sliding scale is a hyper-parameter known as a stride. The size of the feature map or convolution layer output length for each dimension can be realized using the following equation <img src="https://latex.codecogs.com/svg.latex?o_d%20=%20\frac{n_d%20-%20m_d}{s_d}%20+1">, where $d$ is the number of dimensions, <img src="https://latex.codecogs.com/svg.latex?n_d$%20and%20$m_d"> represent the length of the input vector and the kernel length in <img src="https://latex.codecogs.com/svg.latex?d^{th}"> dimension, where <img src="https://latex.codecogs.com/svg.latex?s"> is the value of stride.
+where <img src="https://latex.codecogs.com/svg.latex?X_{n_1xn_2}"> represents two dimensional input matrix and <img src="https://latex.codecogs.com/svg.latex?W_{m_1xm_2}"> is a kernel matrix with <img src="https://latex.codecogs.com/svg.latex?m_1%20\leqslant%20n_1$%20and%20$m_2%20\leqslant%20%20n_2">. The main goal of the convolution operator usage is to reduce the input image to its essential features. A feature map is produced by sliding the convolution filter over the input signal. The sliding scale is a hyper-parameter known as a stride. The size of the feature map or convolution layer output length for each dimension can be realized using the following equation
+
+<img src="https://latex.codecogs.com/svg.latex?o_d%20=%20\frac{n_d%20-%20m_d}{s_d}%20+1">,
+
+where <img src="https://latex.codecogs.com/svg.latex?d"> is the number of dimensions, <img src="https://latex.codecogs.com/svg.latex?n_d$%20and%20$m_d"> represent the length of the input vector and the kernel length in <img src="https://latex.codecogs.com/svg.latex?d^{th}"> dimension, where <img src="https://latex.codecogs.com/svg.latex?s"> is the value of stride.
 
 ### Activation functions
 
-In neural networks, when output data is generated from input data,
-activation functions are proposed to introduce non-linearity. The
-activation functions employed in our study are described below.
+In neural networks, when output data is generated from input data, activation functions are proposed to introduce non-linearity. The activation functions employed in our study are described below.
 
--   **Rectified Linear Unit (ReLu)** It offers much faster learning than
-    sigmoid and tangent functions because of the simpler mathematical
-    operations. Although it is continuous, it is not differentiable.
-    $$\label{RELU}
-        \phi (z) = max(0, z).$$
+-   **Rectified Linear Unit (ReLu)** It offers much faster learning than sigmoid and tangent functions because of the simpler mathematical operations. Although it is continuous, it is not differentiable.
+
+    <img src="https://latex.codecogs.com/svg.latex?\phi%20(z)%20=%20max(0,%20z)">.
 
 -   **Softmax function:** It is the type of sigmoid function, and the
     softmax output can be considered a probability distribution over a
     finite set of outcomes [@10]. Therefore it is used in the output
     layer of the proposed architecture, especially for multiclass
-    classification problems. $$\label{softmax}
-        \phi (z_i) = \frac{e^{z_i}}{\sum_{k=1}^{K} e^{z_k}},$$ where
-    $z_i$ is input of the softmax, $i$ is the output index and $K$ is
-    the number of classes.
+    classification problems.
+    
+    <img src="https://latex.codecogs.com/svg.latex?\phi%20(z_i)%20=%20\frac{e^{z_i}}{\sum_{k=1}^{K}%20e^{z_k}}">,
+        
+    where <img src="https://latex.codecogs.com/svg.latex?z_i"> is input of the softmax, <img src="https://latex.codecogs.com/svg.latex?i"> is the output index and <img src="https://latex.codecogs.com/svg.latex?K"> is the number of classes.
 
 ### Pooling layer
 
@@ -57,7 +57,7 @@ Another important part of CNNs is the pooling operation. A pooling layer
 does not include learnable parameters like bias units or weights.
 Pooling operations are used to decrease the size of feature maps with
 some functions that calculate the average or the maximum value of each
-distinct region of size $a_1 \times a_2$ from the input. It helps the
+distinct region of size <img src="https://latex.codecogs.com/svg.latex?a_1 \times a_2"> from the input. It helps the
 representation become slightly invariant to small translations of the
 input. A pooling layer solves disadvantages related to the probability
 of over-fitting and computational complexity [@11].
@@ -73,17 +73,17 @@ for dense layers.
 ### Fully-connected layer
 
 Fully-connected layers are also called dense layers and correspond to
-convolution layers with a kernel of size ($1 \times 1$). In the
+convolution layers with a kernel of size <img src="https://latex.codecogs.com/svg.latex?(1%20\times%201)">. In the
 fully-connected layer, all units are connected with the units at the
 previous layer. Outputs are multiplied with weight a and are given as
 inputs to the units of the next layers. This processes can be
-represented as follows $$\mathbf{y} = {W^\top}\mathbf{x} + \mathbf{b},$$
-where $\mathbf{y}$ is the output vector of the fully connected layer,
-$\mathbf{x}$ is the input vector, ${W}$ denotes the matrix includes the
-weights of the connections between the neurons, and $\mathbf{b}$
+represented as follows <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}%20=%20{W^\top}\mathbf{x}%20+%20\mathbf{b}">,
+where <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}"> is the output vector of the fully connected layer,
+<img src="https://latex.codecogs.com/svg.latex?\mathbf{x}"> is the input vector, <img src="https://latex.codecogs.com/svg.latex?W"> denotes the matrix includes the
+weights of the connections between the neurons, and <img src="https://latex.codecogs.com/svg.latex?\mathbf{b}">
 represents the bias term vector.
 
-CNN Learning {#CNN_learning}
+CNN Learning 
 ------------
 
 CNNs occur a lot of layers and connections between these layers. As a
@@ -105,12 +105,12 @@ function ([\[softmax\]](#softmax){reference-type="ref"
 reference="softmax"}) and the cross-entropy loss
 ([\[multi-cross\]](#multi-cross){reference-type="ref"
 reference="multi-cross"}) for an instance is generated as follows:
-$$\label{multi-cross}
-    \mathrm{L(\mathbf{p},\mathbf{y})} = -{\sum_{k=1}^{K} y_k \text{log}(p_k)},$$
-where $y_k \in \left \{ {0,1} \right \}$,
-$\mathbf{y} = [0, \cdots,y_k,  \cdots, 0]$ is the output vector, $K$ is
-the number of classes and $p_{k}$ is the estimated probability that the
-instance $\mathbf{x}$ belongs to class $k$. $y_{k}$ is equal to 1 if the
+
+<img src="https://latex.codecogs.com/svg.latex?\mathrm{L(\mathbf{p},\mathbf{y})}%20=%20-{\sum_{k=1}^{K}%20y_k%20\text{log}(p_k)}">,
+
+where <img src="https://latex.codecogs.com/svg.latex?y_k%20\in%20\left%20\{%20{0,1}%20\right%20\}">,
+<img src="https://latex.codecogs.com/svg.latex?\mathbf{y}%20=%20[0,%20\cdots,y_k,%20%20\cdots,%200]"> is the output vector, <img src="https://latex.codecogs.com/svg.latex?K"> is
+the number of classes and <img src="https://latex.codecogs.com/svg.latex?p_{k}"> is the estimated probability that the instance <img src="https://latex.codecogs.com/svg.latex?\mathbf{x}"> belongs to class <img src="https://latex.codecogs.com/svg.latex?k">. <img src="https://latex.codecogs.com/svg.latex?y_{k}"> is equal to 1 if the
 target class is k. Otherwise, it is equal to 0.
 
 ### Optimization
@@ -123,12 +123,12 @@ descent based optimization methods adjust the parameters iteratively to
 minimize the cost function, which calculates a sum of loss functions
 using the training data set. When cross-entropy loss function is used as
 a loss function, the cost function is defined for multiclass
-classification problems as follows: $$\label{multi-cost}
-    \mathit{J(\Theta)}  = -\frac{1}{N} {\sum_{n=1}^{N} \sum_{k=1}^{K} y_k^{(n)} \text{log}(p_k^{(n)})},$$
-where $N$ is the number of instances, $\theta$ is the parameter vector
-and $\Theta$ is the parameter matrix. Gradient descent measures the
-local gradient of the cost function with regards to the parameter
-vector, and it goes in the direction of the descending gradient until
+classification problems as follows: 
+
+<img src="https://latex.codecogs.com/svg.latex?\mathit{J(\Theta)}%20%20=%20-\frac{1}{N}%20{\sum_{n=1}^{N}%20\sum_{k=1}^{K}%20y_k^{(n)}%20\text{log}(p_k^{(n)})}">,
+
+where <img src="https://latex.codecogs.com/svg.latex?N"> is the number of instances, $\theta$ is the parameter vector
+and <img src="https://latex.codecogs.com/svg.latex?\Theta"> is the parameter matrix. Gradient descent measures the local gradient of the cost function with regards to the parameter vector, and it goes in the direction of the descending gradient until
 the algorithm converges to a minimum. At this point, an important
 hyperparameter that must be determined carefully is the learning rate,
 which specifies how often updating parameters occurs. The learning rate
@@ -136,14 +136,15 @@ changes depending on the gradient of the cost function which is
 calculated at each iteration and each unit. At the output layer the
 gradient of the cost function
 ([\[multi-cost\]](#multi-cost){reference-type="ref"
-reference="multi-cost"}) can be defined for $k^{th}$ class as follows:
-$$\nabla_{\theta_{k}}\mathit{J(\Theta)} = \frac{1}{N} {\sum_{n=1}^{N} \left ( p_k^{(n)} -y_k^{(n)} \right )} \mathbf{z_k}^{(n)},$$
-where $\mathbf{z_k}^{(n)}$ is the score regarding $n^{th}$ instance.
+reference="multi-cost"}) can be defined for <img src="https://latex.codecogs.com/svg.latex?k^{th}"> class as follows:
+<img src="https://latex.codecogs.com/svg.latex?\nabla_{\theta_{k}}\mathit{J(\Theta)}%20=%20\frac{1}{N}%20{\sum_{n=1}^{N}%20\left%20(%20p_k^{(n)}%20-y_k^{(n)}%20\right%20)}%20\mathbf{z_k}^{(n)}">,
+where <img src="https://latex.codecogs.com/svg.latex?\mathbf{z_k}^{(n)}"> is the score regarding <img src="https://latex.codecogs.com/svg.latex?n^{th}"> instance.
 Learning rate is updated at each iteration according to the equations as
 in below:
-$$\mathit{\Theta}_\iota =\mathit{ \Theta}_{\iota-1} - \eta \mathit{\Omega}_\iota,$$
-$$\mathit{\Omega}_\iota =  \nabla_{\theta_k}  \mathit{J(\Theta_\iota}),$$
-where $\nabla(\cdot)$ indicates the partial derivation, $\eta$ is the
+<img src="https://latex.codecogs.com/svg.latex?\mathit{\Theta}_\iota%20=\mathit{%20\Theta}_{\iota-1}%20-%20\eta%20\mathit{\Omega}_\iota">,
+<img src="https://latex.codecogs.com/svg.latex?\mathit{\Omega}_\iota%20=%20%20\nabla_{\theta_k}%20%20\mathit{J(\Theta_\iota})">,
+
+where <img src="https://latex.codecogs.com/svg.latex?\nabla(\cdot)"> indicates the partial derivation, <img src="https://latex.codecogs.com/svg.latex?\eta"> is the
 learning rate and $\Omega_\iota$ is the gradient matrix of the weight
 matrix at the iteration time $\iota$. All weights are updated according
 to the chain rule in the backpropagation algorithm in each iteration
