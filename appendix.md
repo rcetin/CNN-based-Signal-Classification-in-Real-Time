@@ -20,7 +20,7 @@ CNN Layers {#CNN_layers}
 
 The convolution layer is based on a discrete convolution process.
 Discrete convolution is given as the following;
-$$y[t] =  \sum_{a = -\infty }^{\infty } x[a] w[t-a],$$ where $x$ is the
+<img src="https://latex.codecogs.com/svg.latex?y[t]%20=%20%20\sum_{a%20=%20-\infty%20}^{\infty%20}%20x[a]%20w[t-a]"> where $x$ is the
 input and $w$ is the kernel that shifts through the information in the
 input and kernel the parts that are summation to it and exclude the
 rest. Input data of convolution layers are generally multidimensional
