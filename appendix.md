@@ -20,26 +20,15 @@ CNN Layers {#CNN_layers}
 
 The convolution layer is based on a discrete convolution process.
 Discrete convolution is given as the following;
-<img src="https://latex.codecogs.com/svg.latex?y[t]%20=%20%20\sum_{a%20=%20-\infty%20}^{\infty%20}%20x[a]%20w[t-a]"> where $x$ is the
-input and $w$ is the kernel that shifts through the information in the
-input and kernel the parts that are summation to it and exclude the
-rest. Input data of convolution layers are generally multidimensional
-arrays. A convolution operator depends on tensor shape can be
-implemented in more dimension. The two-dimensional that is employed in
-our study can be defined as below
-$$Y[k,l] =  \sum_{a_1 = - \infty }^{ \infty } \sum_{a_2 = - \infty }^{\infty } X[k -a_1, l-a_2] W[ a_1, a_2],$$
-where $X_{n_1×n_2}$ represents two dimensional input matrix and
-$W_{m_1×m_2}$ is a kernel matrix with $m_1 \leqslant n_1$ and
-$m_2 \leqslant  n_2$. The main goal of the convolution operator usage is
-to reduce the input image to its essential features. A feature map is
-produced by sliding the convolution filter over the input signal. The
-sliding scale is a hyper-parameter known as a stride. The size of the
-feature map or convolution layer output length for each dimension can be
-realized using the following equation
-$$o_d = \frac{n_d - m_d}{s_d} +1 ,$$ where $d$ is the number of
-dimensions, $n_d$ and $m_d$ represent the length of the input vector and
-the kernel length in $d^{th}$ dimension, where $s$ is the value of
-stride.
+
+<img src="https://latex.codecogs.com/svg.latex?y[t]%20=%20%20\sum_{a%20=%20-\infty%20}^{\infty%20}%20x[a]%20w[t-a]"> 
+
+where $x$ is the input and $w$ is the kernel that shifts through the information in the
+input and kernel the parts that are summation to it and exclude the rest. Input data of convolution layers are generally multidimensional arrays. A convolution operator depends on tensor shape can be implemented in more dimension. The two-dimensional that is employed in our study can be defined as below
+
+<img src="https://latex.codecogs.com/svg.latex?Y[k,l]%20=%20%20\sum_{a_1%20=%20-%20\infty%20}^{%20\infty%20}%20\sum_{a_2%20=%20-%20\infty%20}^{\infty%20}%20X[k%20-a_1,%20l-a_2]%20W[%20a_1,%20a_2]">
+
+where <img src="https://latex.codecogs.com/svg.latex?X_{n_1xn_2}"> represents two dimensional input matrix and <img src="https://latex.codecogs.com/svg.latex?W_{m_1xm_2}"> is a kernel matrix with <img src="https://latex.codecogs.com/svg.latex?m_1%20\leqslant%20n_1$%20and%20$m_2%20\leqslant%20%20n_2">. The main goal of the convolution operator usage is to reduce the input image to its essential features. A feature map is produced by sliding the convolution filter over the input signal. The sliding scale is a hyper-parameter known as a stride. The size of the feature map or convolution layer output length for each dimension can be realized using the following equation <img src="https://latex.codecogs.com/svg.latex?o_d%20=%20\frac{n_d%20-%20m_d}{s_d}%20+1">, where $d$ is the number of dimensions, <img src="https://latex.codecogs.com/svg.latex?n_d$%20and%20$m_d"> represent the length of the input vector and the kernel length in <img src="https://latex.codecogs.com/svg.latex?d^{th}"> dimension, where <img src="https://latex.codecogs.com/svg.latex?s"> is the value of stride.
 
 ### Activation functions
 
