@@ -168,6 +168,10 @@ where <img src="https://latex.codecogs.com/svg.latex?\tau"> denotes adaptive lea
 ![Backpropagation algorithm on two layer neural
 network.](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/master/figs/Backpropagation_mlp.png)
 
+| ![Backpropagation_mlp.png](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/master/figs/Backpropagation_mlp.png) | 
+|:--:| 
+| *Backpropagation algorithm on two layer neural
+network.* |
 
 ![Backpropagation algorithm on two layer neural
 network.[]{label="backpropagation"}](./fig/Backpropagation_mlp.pdf){#backpropagation
