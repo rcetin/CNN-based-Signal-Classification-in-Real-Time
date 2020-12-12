@@ -1,3 +1,7 @@
+Appendix A
+=============================
+An appendix is provided below for the manuscript “Convolutional Neural Network based Signal Classification in Real Time”.
+
 Convolutional Neural Networks
 =============================
 
@@ -7,7 +11,7 @@ convolution operator at least one layer, unlike the other types of
 neural networks. Usage of the convolution operator provides three
 advantages that play significant roles for improving the machine
 learning system: sparse interactions, parameter sharing, and equivariant
-representations [@10]. CNNs can be thought of as a series of layers. In
+representations <cite>[1]</cite>. CNNs can be thought of as a series of layers. In
 this study, convolutional layers, downsampling layers are used to
 extract features, and a flatten layer is preferred to create vector
 forms of feature maps before the classification part of the network
@@ -51,7 +55,7 @@ In neural networks, when output data is generated from input data, activation fu
 
 -   **Softmax function:** It is the type of sigmoid function, and the
     softmax output can be considered a probability distribution over a
-    finite set of outcomes [@10]. Therefore it is used in the output
+    finite set of outcomes <cite>[1]</cite>. Therefore it is used in the output
     layer of the proposed architecture, especially for multiclass
     classification problems.
     
@@ -70,7 +74,7 @@ some functions that calculate the average or the maximum value of each
 distinct region of size <img src="https://latex.codecogs.com/svg.latex?a_1 \times a_2"> from the input. It helps the
 representation become slightly invariant to small translations of the
 input. A pooling layer solves disadvantages related to the probability
-of over-fitting and computational complexity [@11].
+of over-fitting and computational complexity <cite>[2]</cite>.
 
 ### Flatten layer
 
@@ -246,11 +250,11 @@ layer, the chain rule is:
 where <img src="https://latex.codecogs.com/svg.latex?b_{t}"> is the bias term, <img src="https://latex.codecogs.com/svg.latex?s_{t}"> is the output of <img src="https://latex.codecogs.com/svg.latex?t^{th}"> neuron at hidden layer.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\frac{\partial{z_i}}{\partial v_{it}} = \sum_{t=1}^{T} s_{t},">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial{z_i}}{\partial{v}_{it}}=\sum_{t=1}^{T}s_{t},">
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\frac{\partial \mathrm{L({p_i},{y_i})} }  {\partial v_{it}} = \left ( p_i - y_i \right )  \sum_{t=1}^{T} s_{t},">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial\mathrm{L({p_i},{y_i})}}{\partial{v}_{it}}=\left(p_i-y_i\right)\sum_{t=1}^{T}s_{t},">
 </p>
 
 To update <img src="https://latex.codecogs.com/svg.latex?w_{td},"> a weight at first layer chain rule is:
@@ -307,10 +311,11 @@ each one of the batches as in below:
 <img src="https://latex.codecogs.com/svg.latex?\mathbf{\sigma}_{B}^{2} = \frac{1}{R}\sum_{r=1}^{R}  \left ( \mathbf{f_r} - \mathbf{\mu}_{B}\right )^2,">
 </p>
 
-where <img src="https://latex.codecogs.com/svg.latex?R"> represents the total number of features at one batch, <img src="https://latex.codecogs.com/svg.latex?\mathbf{\mu}_{B}$ and $\mathbf{\sigma}_{B}^{2}"> are mean and variance of the batch respectively.
+where <img src="https://latex.codecogs.com/svg.latex?R"> represents the total number of features at one batch, 
+<img src="https://latex.codecogs.com/svg.latex?\mathbf{\mu}_{B}"> and <img src="https://latex.codecogs.com/svg.latex?\mathbf{\sigma}_{B}^{2}"> are mean and variance of the batch respectively.
 
 <p align="center">
-<img src="https://latex.codecogs.com/svg.latex?\widehat{\mathbf{f}_r}=\frac{\mathbf{f}_r-\mathbf{\mu}_{B}}  {\sqrt{\mathbf{\sigma}_{B}^{2}+\varepsilon}}  \ .">
+<img src="https://latex.codecogs.com/svg.latex?\widehat{\mathbf{f}_r}=\frac{\mathbf{f}_r-\mathbf{\mu}_{B}}{\sqrt{\mathbf{\sigma}_{B}^{2}+\varepsilon}}.">
 </p>
 
 All normalized features are scaled and shifted to hinder the network's
@@ -329,3 +334,12 @@ outputs. In this way, the hidden units are enforced to extract valuable
 features. Moreover, it reduces the risk of training data memorization.
 Hyperparameters expressing the probability of the masking process are
 called \"dropout rate\".
+
+References
+=============================
+
+[1] I. Goodfellow, Y. Bengio and A. Courville, “Deep Learning”, *MIT Press*, 2016.
+
+[2] R. Sebastian, “Python Machine Learning”, *Packt Publishing*, 2015.
+
+
