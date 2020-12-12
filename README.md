@@ -145,8 +145,7 @@ in below:
 <img src="https://latex.codecogs.com/svg.latex?\mathit{\Omega}_\iota%20=%20%20\nabla_{\theta_k}%20%20\mathit{J(\Theta_\iota})">,
 
 where <img src="https://latex.codecogs.com/svg.latex?\nabla(\cdot)"> indicates the partial derivation, <img src="https://latex.codecogs.com/svg.latex?\eta"> is the
-learning rate and $\Omega_\iota$ is the gradient matrix of the weight
-matrix at the iteration time $\iota$. All weights are updated according
+learning rate and <img src="https://latex.codecogs.com/svg.latex?\Omega_\iota"> is the gradient matrix of the weight matrix at the iteration time <img src="https://latex.codecogs.com/svg.latex?\iota">. All weights are updated according
 to the chain rule in the backpropagation algorithm in each iteration
 from the output unit to inputs.
 
@@ -158,15 +157,17 @@ parameters. It calculates the learning rate depending on the gradient of
 cost function and estimates the first moment (mean) and the second
 moment (variance) of the gradient to update parameters. Estimations of
 mean and variance can be calculated using the following equations:
-$$\widehat{E}\left [ \psi  \right ]_\iota =  \frac{E\left [ \psi  \right ]_\iota}{ 1 -\left ( \gamma_1  \right )^\iota},\\$$
-$$\widehat{E}\left [ \psi^2  \right ]_\iota =  \frac{E\left [ \psi^2  \right ]_\iota}{ 1 -\left ( \gamma_2  \right )^\iota},\\$$
-where $\psi$ indicates the gradient of the cost function, $\gamma_1$ and
-$\gamma_2$ are values of the decay. After that, the weights are updated
-according to the following equation:
-$$\theta_{\iota}^{\tau} = \theta_{\iota-1}^{\tau} - \frac{\eta } {{\sqrt{\widehat{E}\left [ \psi^2  \right ]_\iota}} + \epsilon },\\$$
-where $\tau$ denotes adaptive learning rate of each individual parameter
-and $\epsilon$ is a small term which is used to prevent division to
-zero.
+<img src="https://latex.codecogs.com/svg.latex?\widehat{E}\left%20[%20\psi%20%20\right%20]_\iota%20=%20%20\frac{E\left%20[%20\psi%20%20\right%20]_\iota}{%201%20-\left%20(%20\gamma_1%20%20\right%20)^\iota}">,
+<img src="https://latex.codecogs.com/svg.latex?\widehat{E}\left%20[%20\psi^2%20%20\right%20]_\iota%20=%20%20\frac{E\left%20[%20\psi^2%20%20\right%20]_\iota}{%201%20-\left%20(%20\gamma_2%20%20\right%20)^\iota}">,
+
+where <img src="https://latex.codecogs.com/svg.latex?\psi"> indicates the gradient of the cost function, <img src="https://latex.codecogs.com/svg.latex?\gamma_1"> and
+<img src="https://latex.codecogs.com/svg.latex?\gamma_2"> are values of the decay. After that, the weights are updated according to the following equation:
+<img src="https://latex.codecogs.com/svg.latex?\theta_{\iota}^{\tau}%20=%20\theta_{\iota-1}^{\tau}%20-%20\frac{\eta%20}%20{{\sqrt{\widehat{E}\left%20[%20\psi^2%20%20\right%20]_\iota}}%20+%20\epsilon%20}">,
+where <img src="https://latex.codecogs.com/svg.latex?\tau"> denotes adaptive learning rate of each individual parameter and <img src="https://latex.codecogs.com/svg.latex?\epsilon"> is a small term which is used to prevent division to zero.
+
+![Backpropagation algorithm on two layer neural
+network.](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/master/figs/Backpropagation_mlp.pdf)
+
 
 ![Backpropagation algorithm on two layer neural
 network.[]{label="backpropagation"}](./fig/Backpropagation_mlp.pdf){#backpropagation
