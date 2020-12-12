@@ -166,7 +166,7 @@ where <img src="https://latex.codecogs.com/svg.latex?\psi"> indicates the gradie
 where <img src="https://latex.codecogs.com/svg.latex?\tau"> denotes adaptive learning rate of each individual parameter and <img src="https://latex.codecogs.com/svg.latex?\epsilon"> is a small term which is used to prevent division to zero.
 
 ![Backpropagation algorithm on two layer neural
-network.](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/master/figs/Backpropagation_mlp.pdf)
+network.](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/master/figs/Backpropagation_mlp.png)
 
 
 ![Backpropagation algorithm on two layer neural
