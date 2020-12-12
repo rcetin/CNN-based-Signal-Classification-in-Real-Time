@@ -21,15 +21,21 @@ CNN Layers
 The convolution layer is based on a discrete convolution process.
 Discrete convolution is given as the following;
 
-<img src="https://latex.codecogs.com/svg.latex?y[t]%20=%20%20\sum_{a%20=%20-\infty%20}^{\infty%20}%20x[a]%20w[t-a]">,
+<p align="center">
+  <img src="https://latex.codecogs.com/svg.latex?y[t]%20=%20%20\sum_{a%20=%20-\infty%20}^{\infty%20}%20x[a]%20w[t-a],">
+</p>
 
 where <img src="https://latex.codecogs.com/svg.latex?x"> is the input and <img src="https://latex.codecogs.com/svg.latex?w"> is the kernel that shifts through the information in the input and kernel the parts that are summation to it and exclude the rest. Input data of convolution layers are generally multidimensional arrays. A convolution operator depends on tensor shape can be implemented in more dimension. The two-dimensional that is employed in our study can be defined as below
 
-<img src="https://latex.codecogs.com/svg.latex?Y[k,l]%20=%20%20\sum_{a_1%20=%20-%20\infty%20}^{%20\infty%20}%20\sum_{a_2%20=%20-%20\infty%20}^{\infty%20}%20X[k%20-a_1,%20l-a_2]%20W[%20a_1,%20a_2]">,
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?Y[k,l]%20=%20%20\sum_{a_1%20=%20-%20\infty%20}^{%20\infty%20}%20\sum_{a_2%20=%20-%20\infty%20}^{\infty%20}%20X[k%20-a_1,%20l-a_2]%20W[%20a_1,%20a_2],">
+</p>
 
 where <img src="https://latex.codecogs.com/svg.latex?X_{n_1xn_2}"> represents two dimensional input matrix and <img src="https://latex.codecogs.com/svg.latex?W_{m_1xm_2}"> is a kernel matrix with <img src="https://latex.codecogs.com/svg.latex?m_1%20\leqslant%20n_1$%20and%20$m_2%20\leqslant%20%20n_2">. The main goal of the convolution operator usage is to reduce the input image to its essential features. A feature map is produced by sliding the convolution filter over the input signal. The sliding scale is a hyper-parameter known as a stride. The size of the feature map or convolution layer output length for each dimension can be realized using the following equation
 
-<img src="https://latex.codecogs.com/svg.latex?o_d%20=%20\frac{n_d%20-%20m_d}{s_d}%20+1">,
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?o_d%20=%20\frac{n_d%20-%20m_d}{s_d}%20+1,">
+</p>
 
 where <img src="https://latex.codecogs.com/svg.latex?d"> is the number of dimensions, <img src="https://latex.codecogs.com/svg.latex?n_d$%20and%20$m_d"> represent the length of the input vector and the kernel length in <img src="https://latex.codecogs.com/svg.latex?d^{th}"> dimension, where <img src="https://latex.codecogs.com/svg.latex?s"> is the value of stride.
 
@@ -39,7 +45,9 @@ In neural networks, when output data is generated from input data, activation fu
 
 -   **Rectified Linear Unit (ReLu)** It offers much faster learning than sigmoid and tangent functions because of the simpler mathematical operations. Although it is continuous, it is not differentiable.
 
+    <p align="center">
     <img src="https://latex.codecogs.com/svg.latex?\phi%20(z)%20=%20max(0,%20z)">.
+    </p>
 
 -   **Softmax function:** It is the type of sigmoid function, and the
     softmax output can be considered a probability distribution over a
@@ -47,8 +55,10 @@ In neural networks, when output data is generated from input data, activation fu
     layer of the proposed architecture, especially for multiclass
     classification problems.
     
-    <img src="https://latex.codecogs.com/svg.latex?\phi%20(z_i)%20=%20\frac{e^{z_i}}{\sum_{k=1}^{K}%20e^{z_k}}">,
-        
+    <p align="center">
+    <img src="https://latex.codecogs.com/svg.latex?\phi%20(z_i)%20=%20\frac{e^{z_i}}{\sum_{k=1}^{K}%20e^{z_k}},">
+    </p>
+
     where <img src="https://latex.codecogs.com/svg.latex?z_i"> is input of the softmax, <img src="https://latex.codecogs.com/svg.latex?i"> is the output index and <img src="https://latex.codecogs.com/svg.latex?K"> is the number of classes.
 
 ### Pooling layer
@@ -77,7 +87,11 @@ convolution layers with a kernel of size <img src="https://latex.codecogs.com/sv
 fully-connected layer, all units are connected with the units at the
 previous layer. Outputs are multiplied with weight a and are given as
 inputs to the units of the next layers. This processes can be
-represented as follows <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}%20=%20{W^\top}\mathbf{x}%20+%20\mathbf{b}">,
+represented as follows
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\mathbf{y}%20=%20{W^\top}\mathbf{x}%20+%20\mathbf{b},">
+</p>
 where <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}"> is the output vector of the fully connected layer,
 <img src="https://latex.codecogs.com/svg.latex?\mathbf{x}"> is the input vector, <img src="https://latex.codecogs.com/svg.latex?W"> denotes the matrix includes the
 weights of the connections between the neurons, and <img src="https://latex.codecogs.com/svg.latex?\mathbf{b}">
@@ -106,9 +120,11 @@ reference="softmax"}) and the cross-entropy loss
 ([\[multi-cross\]](#multi-cross){reference-type="ref"
 reference="multi-cross"}) for an instance is generated as follows:
 
-<img src="https://latex.codecogs.com/svg.latex?\mathrm{L(\mathbf{p},\mathbf{y})}%20=%20-{\sum_{k=1}^{K}%20y_k%20\text{log}(p_k)}">,
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\mathrm{L(\mathbf{p},\mathbf{y})}%20=%20-{\sum_{k=1}^{K}%20y_k%20\text{log}(p_k)},">
+</p>
 
-where <img src="https://latex.codecogs.com/svg.latex?y_k%20\in%20\left%20\{%20{0,1}%20\right%20\}">,
+where <img src="https://latex.codecogs.com/svg.latex?y_k%20\in%20\left%20\{%20{0,1}%20\right%20\},">
 <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}%20=%20[0,%20\cdots,y_k,%20%20\cdots,%200]"> is the output vector, <img src="https://latex.codecogs.com/svg.latex?K"> is
 the number of classes and <img src="https://latex.codecogs.com/svg.latex?p_{k}"> is the estimated probability that the instance <img src="https://latex.codecogs.com/svg.latex?\mathbf{x}"> belongs to class <img src="https://latex.codecogs.com/svg.latex?k">. <img src="https://latex.codecogs.com/svg.latex?y_{k}"> is equal to 1 if the
 target class is k. Otherwise, it is equal to 0.
@@ -125,7 +141,9 @@ using the training data set. When cross-entropy loss function is used as
 a loss function, the cost function is defined for multiclass
 classification problems as follows: 
 
-<img src="https://latex.codecogs.com/svg.latex?\mathit{J(\Theta)}%20%20=%20-\frac{1}{N}%20{\sum_{n=1}^{N}%20\sum_{k=1}^{K}%20y_k^{(n)}%20\text{log}(p_k^{(n)})}">,
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\mathit{J(\Theta)}%20%20=%20-\frac{1}{N}%20{\sum_{n=1}^{N}%20\sum_{k=1}^{K}%20y_k^{(n)}%20\text{log}(p_k^{(n)})},">
+</p>
 
 where <img src="https://latex.codecogs.com/svg.latex?N"> is the number of instances, $\theta$ is the parameter vector
 and <img src="https://latex.codecogs.com/svg.latex?\Theta"> is the parameter matrix. Gradient descent measures the local gradient of the cost function with regards to the parameter vector, and it goes in the direction of the descending gradient until
@@ -137,12 +155,22 @@ calculated at each iteration and each unit. At the output layer the
 gradient of the cost function
 ([\[multi-cost\]](#multi-cost){reference-type="ref"
 reference="multi-cost"}) can be defined for <img src="https://latex.codecogs.com/svg.latex?k^{th}"> class as follows:
-<img src="https://latex.codecogs.com/svg.latex?\nabla_{\theta_{k}}\mathit{J(\Theta)}%20=%20\frac{1}{N}%20{\sum_{n=1}^{N}%20\left%20(%20p_k^{(n)}%20-y_k^{(n)}%20\right%20)}%20\mathbf{z_k}^{(n)}">,
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\nabla_{\theta_{k}}\mathit{J(\Theta)}%20=%20\frac{1}{N}%20{\sum_{n=1}^{N}%20\left%20(%20p_k^{(n)}%20-y_k^{(n)}%20\right%20)}%20\mathbf{z_k}^{(n)},">
+</p>
+
 where <img src="https://latex.codecogs.com/svg.latex?\mathbf{z_k}^{(n)}"> is the score regarding <img src="https://latex.codecogs.com/svg.latex?n^{th}"> instance.
 Learning rate is updated at each iteration according to the equations as
 in below:
-<img src="https://latex.codecogs.com/svg.latex?\mathit{\Theta}_\iota%20=\mathit{%20\Theta}_{\iota-1}%20-%20\eta%20\mathit{\Omega}_\iota">,
-<img src="https://latex.codecogs.com/svg.latex?\mathit{\Omega}_\iota%20=%20%20\nabla_{\theta_k}%20%20\mathit{J(\Theta_\iota})">,
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\mathit{\Theta}_\iota%20=\mathit{%20\Theta}_{\iota-1}%20-%20\eta%20\mathit{\Omega}_\iota,">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\mathit{\Omega}_\iota%20=%20%20\nabla_{\theta_k}%20%20\mathit{J(\Theta_\iota}),">
+</p>
 
 where <img src="https://latex.codecogs.com/svg.latex?\nabla(\cdot)"> indicates the partial derivation, <img src="https://latex.codecogs.com/svg.latex?\eta"> is the
 learning rate and <img src="https://latex.codecogs.com/svg.latex?\Omega_\iota"> is the gradient matrix of the weight matrix at the iteration time <img src="https://latex.codecogs.com/svg.latex?\iota">. All weights are updated according
@@ -157,24 +185,27 @@ parameters. It calculates the learning rate depending on the gradient of
 cost function and estimates the first moment (mean) and the second
 moment (variance) of the gradient to update parameters. Estimations of
 mean and variance can be calculated using the following equations:
-<img src="https://latex.codecogs.com/svg.latex?\widehat{E}\left%20[%20\psi%20%20\right%20]_\iota%20=%20%20\frac{E\left%20[%20\psi%20%20\right%20]_\iota}{%201%20-\left%20(%20\gamma_1%20%20\right%20)^\iota}">,
-<img src="https://latex.codecogs.com/svg.latex?\widehat{E}\left%20[%20\psi^2%20%20\right%20]_\iota%20=%20%20\frac{E\left%20[%20\psi^2%20%20\right%20]_\iota}{%201%20-\left%20(%20\gamma_2%20%20\right%20)^\iota}">,
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\widehat{E}\left%20[%20\psi%20%20\right%20]_\iota%20=%20%20\frac{E\left%20[%20\psi%20%20\right%20]_\iota}{%201%20-\left%20(%20\gamma_1%20%20\right%20)^\iota},">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\widehat{E}\left%20[%20\psi^2%20%20\right%20]_\iota%20=%20%20\frac{E\left%20[%20\psi^2%20%20\right%20]_\iota}{%201%20-\left%20(%20\gamma_2%20%20\right%20)^\iota},">
+</p>
 
 where <img src="https://latex.codecogs.com/svg.latex?\psi"> indicates the gradient of the cost function, <img src="https://latex.codecogs.com/svg.latex?\gamma_1"> and
 <img src="https://latex.codecogs.com/svg.latex?\gamma_2"> are values of the decay. After that, the weights are updated according to the following equation:
-<img src="https://latex.codecogs.com/svg.latex?\theta_{\iota}^{\tau}%20=%20\theta_{\iota-1}^{\tau}%20-%20\frac{\eta%20}%20{{\sqrt{\widehat{E}\left%20[%20\psi^2%20%20\right%20]_\iota}}%20+%20\epsilon%20}">,
-where <img src="https://latex.codecogs.com/svg.latex?\tau"> denotes adaptive learning rate of each individual parameter and <img src="https://latex.codecogs.com/svg.latex?\epsilon"> is a small term which is used to prevent division to zero.
 
-![Backpropagation algorithm on two layer neural
-network.](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/main/figs/Backpropagation_mlp.png)
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\theta_{\iota}^{\tau}%20=%20\theta_{\iota-1}^{\tau}%20-%20\frac{\eta%20}%20{{\sqrt{\widehat{E}\left%20[%20\psi^2%20%20\right%20]_\iota}}%20+%20\epsilon%20},">
+</p>
+
+where <img src="https://latex.codecogs.com/svg.latex?\tau"> denotes adaptive learning rate of each individual parameter and <img src="https://latex.codecogs.com/svg.latex?\epsilon"> is a small term which is used to prevent division to zero.
 
 | ![Backpropagation_mlp.png](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/main/figs/Backpropagation_mlp.png) | 
 |:--:| 
 | *Backpropagation algorithm on two layer neural network.* |
-
-![Backpropagation algorithm on two layer neural
-network.[]{label="backpropagation"}](./fig/Backpropagation_mlp.pdf){#backpropagation
-width="380pt"}
 
 ### Backpropogation
 
@@ -191,53 +222,60 @@ we assume that softmax function and sigmoid function are used at the
 output layer, hidden layer, respectively. Gradients are computed related
 to the neural network architecture in Figure
 [1](#backpropagation){reference-type="ref" reference="backpropagation"}
-for an instance as follows. To update $v_{it}$, a weight at the second
-layer, the chain rule is: $$\label{chain_rule}
-    \frac{\partial \mathrm{L({p_i},{y_i})} }  {\partial v_{it}}
-       =  \frac{\partial \mathrm{L({p_i},{y_i})}}{\partial p_i}
-           \frac{\partial p_i}{\partial z_i}
-           \frac{\partial z_i}{\partial v_{it}},$$
-$$\frac{\partial \mathrm{L({p_i},{y_i})}}{\partial p_i}
-   =  - \sum_{k=1}^{K} \frac{y_{k}}{p_{k}},$$ $$\begin{align*}
-            \frac{\partial p_i}{\partial z_i} & =  \left\{\begin{matrix}
-            \tfrac{e^{z_i}}{\sum_{k=1}^{K}e^{z_k}}
-                              - \left ( \tfrac{e^{z_i}}{\sum_{k=1}^{K}e^{z_k}}   \right ) ^2 ,& i=k \\ \\[0,05cm]
-            - \frac{e^{z_i} e^{z_k}}{ \left (  \sum_{k=1}^{K}e^{z_k}   \right ) ^2  }  \      ,& i\neq k 
-            \end{matrix}\right.
-        \\  \\[0,05cm]
-            &= \left\{\begin{matrix}
-            p_i - {p_k}^2 \ ,& i=k \\ 
-            -p_i \ p_k  \   ,& i \neq k
-            \end{matrix}\right.
-    \end{align*}$$ $$\begin{align*}
-     \frac{\partial \mathrm{L({p_i},{y_i})}}{\partial z_i}  
-               &= \sum_{k=1}^{K} \frac{\partial \mathrm{L({p_i},{y_i})}}{\partial p_i}
-                     \frac{\partial p_i}{\partial z_i} ,\\ 
-                     \vspace{0.3cm}
-               &= \frac{\partial \mathrm{L({p_i},{y_i})}}{\partial p_i}
-                     \frac{\partial p_i}{\partial z_i} - \sum_{k\neq i}^{K}   \frac{\partial \mathrm{L({p_i},{y_i})}}{\partial p_k}
-                     \frac{\partial p_k}{\partial z_i} , & \\ 
-                     \vspace{0.3cm}
-     &= -y_i(1 - p_i) +  \sum_{k\neq i}^{K} y_k p_i ,\\ 
-     &= p_i - y_i.
-    \end{align*}$$ $${z_i} = \sum_{t=1}^{T} s_{t}v_{it} + b_{t},$$ where
-$b_{t}$ is the bias term, $s_{t}$ is the output of $t^{th}$ neuron at
-hidden layer.
-$$\frac{\partial{z_i}}{\partial v_{it}} = \sum_{t=1}^{T} s_{t},$$
-$$\frac{\partial \mathrm{L({p_i},{y_i})} }  {\partial v_{it}} = \left ( p_i - y_i \right )  \sum_{t=1}^{T} s_{t},$$
-To update $w_{td}$, a weight at first layer chain rule is:
-$$\frac{\partial \mathrm{L({p_i},{y_i})} }  {\partial w_{td}}
-       =  \frac{\partial \mathrm{L({p_i},{y_i})}}{\partial p_i}
-           \frac{\partial p_i}{\partial z_i}
-            \frac{\partial z_i}{\partial s_{t}}
-             \frac{\partial s_{t}}{\partial u_{t}}
-              \frac{\partial u_{t}}{\partial w_{td}}.$$ $$\begin{align*}
-         \frac{\partial s_{t}}{\partial u_{t}} &=\left (\frac{1}{1+e^{-u_{t}}}\right )\left ( 1- \frac{1}{1+e^{-u_{t}}} \right ),  \\[0,5cm] 
-         &= s_t\left (1- s_t \right ).
-    \end{align*}$$ $$u_t = \sum_{n=1}^{N} x_d w_{td},$$
-$$\frac{\partial u_t}{\partial w_{td}} = \sum_{n=1}^{D} x_d ,$$
-$$\frac{\partial \mathrm{L({p_i},{y_i})} }  {\partial w_{td}}
-       =  \sum_{d=1}^{D}\left ( p_i - y_i \right ) v_{it} \ s_t\left (1- s_t \right )x_d .$$
+for an instance as follows. To update <img src="https://latex.codecogs.com/svg.latex?v_{it},"> a weight at the second
+layer, the chain rule is:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial%20\mathrm{L({p_i},{y_i})}%20}%20%20{\partial%20v_{it}}=%20%20\frac{\partial%20\mathrm{L({p_i},{y_i})}}{\partial%20p_i}\frac{\partial%20p_i}{\partial%20z_i}\frac{\partial%20z_i}{\partial%20v_{it}},">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial%20\mathrm{L({p_i},{y_i})}}{\partial%20p_i}=%20%20-%20\sum_{k=1}^{K}%20\frac{y_{k}}{p_{k}},">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial%20p_i}{\partial%20z_i}%20&%20=%20%20\left\{\begin{matrix}\tfrac{e^{z_i}}{\sum_{k=1}^{K}e^{z_k}}-%20\left%20(%20\tfrac{e^{z_i}}{\sum_{k=1}^{K}e^{z_k}}%20%20%20\right%20)%20^2%20,&%20i=k%20\\%20\\[0,05cm]-%20\frac{e^{z_i}%20e^{z_k}}{%20\left%20(%20%20\sum_{k=1}^{K}e^{z_k}%20%20%20\right%20)%20^2%20%20}%20%20\%20%20%20%20%20%20,&%20i\neq%20k\end{matrix}\right.\\%20%20\\[0,05cm]&=%20\left\{\begin{matrix}p_i%20-%20{p_k}^2%20\%20,&%20i=k%20\\-p_i%20\%20p_k%20%20\%20%20%20,&%20i%20\neq%20k\end{matrix}\right.\end{align*}">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial%20\mathrm{L({p_i},{y_i})}}{\partial%20z_i}&=%20\sum_{k=1}^{K}%20\frac{\partial%20\mathrm{L({p_i},{y_i})}}{\partial%20p_i}\frac{\partial%20p_i}{\partial%20z_i}%20,\\\vspace{0.3cm}&=%20\frac{\partial%20\mathrm{L({p_i},{y_i})}}{\partial%20p_i}\frac{\partial%20p_i}{\partial%20z_i}%20-%20\sum_{k\neq%20i}^{K}%20%20%20\frac{\partial%20\mathrm{L({p_i},{y_i})}}{\partial%20p_k}\frac{\partial%20p_k}{\partial%20z_i}%20,%20&%20\\\vspace{0.3cm}&=%20-y_i(1%20-%20p_i)%20+%20%20\sum_{k\neq%20i}^{K}%20y_k%20p_i%20,\\&=%20p_i%20-%20y_i.\end{align*}">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?{z_i}%20=%20\sum_{t=1}^{T}%20s_{t}v_{it}%20+%20b_{t},"> 
+</p>
+
+where <img src="https://latex.codecogs.com/svg.latex?b_{t}"> is the bias term, <img src="https://latex.codecogs.com/svg.latex?s_{t}"> is the output of <img src="https://latex.codecogs.com/svg.latex?t^{th}"> neuron at hidden layer.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial{z_i}}{\partial v_{it}} = \sum_{t=1}^{T} s_{t},">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial \mathrm{L({p_i},{y_i})} }  {\partial v_{it}} = \left ( p_i - y_i \right )  \sum_{t=1}^{T} s_{t},">
+</p>
+
+To update <img src="https://latex.codecogs.com/svg.latex?w_{td},"> a weight at first layer chain rule is:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial%20\mathrm{L({p_i},{y_i})}%20}%20%20{\partial%20w_{td}}=%20%20\frac{\partial%20\mathrm{L({p_i},{y_i})}}{\partial%20p_i}\frac{\partial%20p_i}{\partial%20z_i}\frac{\partial%20z_i}{\partial%20s_{t}}\frac{\partial%20s_{t}}{\partial%20u_{t}}\frac{\partial%20u_{t}}{\partial%20w_{td}}.">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\begin{align*}\frac{\partial%20s_{t}}{\partial%20u_{t}}%20&=\left%20(\frac{1}{1+e^{-u_{t}}}\right%20)\left%20(%201-%20\frac{1}{1+e^{-u_{t}}}%20\right%20),%20%20\\[0,5cm]&=%20s_t\left%20(1-%20s_t%20\right%20).\end{align*}">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?u_t%20=%20\sum_{n=1}^{N}%20x_d%20w_{td},">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial%20u_t}{\partial%20w_{td}}%20=%20\sum_{n=1}^{D}%20x_d%20,">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\frac{\partial%20\mathrm{L({p_i},{y_i})}%20}%20%20{\partial%20w_{td}}=%20%20\sum_{d=1}^{D}\left%20(%20p_i%20-%20y_i%20\right%20)%20v_{it}%20\%20s_t\left%20(1-%20s_t%20\right%20)x_d%20.">
+</p>
 
 ### Regularization
 
@@ -253,17 +291,30 @@ a variation when the parameters are updated during training. It improves
 learning by reducing this internal covariance shift. In this way, a
 model is more resistant to problems such as vanishing, exploiting
 problems. As a first step, given d-dimensional feature vector
-$\mathbf{f}=(f^{(1)} f^{(2)} \cdots f^{(d)})$, all features are
+<img src="https://latex.codecogs.com/svg.latex?\mathbf{f}=(f^{(1)}%20f^{(2)}%20\cdots%20f^{(d)}),"> all features are
 normalized as in below;
-$$\widehat{\mathbf{f}}=\frac{f^{(d)}-\mathrm{E}[f^{(d)}]}  {\sqrt{\mathrm{Var}[f^{(d)}]}} \ .\\$$
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\widehat{\mathbf{f}}=\frac{f^{(d)}-\mathrm{E}[f^{(d)}]}%20%20{\sqrt{\mathrm{Var}[f^{(d)}]}}%20\%20.">
+</p>
+
 After the feature normalization, batch normalization can be defined for
 each one of the batches as in below:
-$$\mathbf{\mu}_{B} = \frac{1}{R} \sum_{r=1}^{R}\mathbf{f_r},$$
-$$\mathbf{\sigma}_{B}^{2} = \frac{1}{R}\sum_{r=1}^{R}  \left ( \mathbf{f_r} - \mathbf{\mu}_{B}\right )^2  ,$$
-where $R$ represents the total number of features at one batch,
-$\mathbf{\mu}_{B}$ and $\mathbf{\sigma}_{B}^{2}$ are mean and variance
-of the batch respectively.
-$$\widehat{\mathbf{f}_r}=\frac{\mathbf{f}_r-\mathbf{\mu}_{B}}  {\sqrt{\mathbf{\sigma}_{B}^{2}+\varepsilon}}  \ .$$
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\mathbf{\mu}_{B}%20=%20\frac{1}{R}%20\sum_{r=1}^{R}\mathbf{f_r},">
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\mathbf{\sigma}_{B}^{2} = \frac{1}{R}\sum_{r=1}^{R}  \left ( \mathbf{f_r} - \mathbf{\mu}_{B}\right )^2,">
+</p>
+
+where <img src="https://latex.codecogs.com/svg.latex?R"> represents the total number of features at one batch, <img src="https://latex.codecogs.com/svg.latex?\mathbf{\mu}_{B}$ and $\mathbf{\sigma}_{B}^{2}"> are mean and variance of the batch respectively.
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?\widehat{\mathbf{f}_r}=\frac{\mathbf{f}_r-\mathbf{\mu}_{B}}  {\sqrt{\mathbf{\sigma}_{B}^{2}+\varepsilon}}  \ .">
+</p>
+
 All normalized features are scaled and shifted to hinder the network's
 ability to utilize nonlinear transformations fully. Batch Normalization
 allows us to use much higher learning rates and be less careful about
