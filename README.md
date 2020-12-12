@@ -92,10 +92,8 @@ represented as follows
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}%20=%20{W^\top}\mathbf{x}%20+%20\mathbf{b},">
 </p>
-where <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}"> is the output vector of the fully connected layer,
-<img src="https://latex.codecogs.com/svg.latex?\mathbf{x}"> is the input vector, <img src="https://latex.codecogs.com/svg.latex?W"> denotes the matrix includes the
-weights of the connections between the neurons, and <img src="https://latex.codecogs.com/svg.latex?\mathbf{b}">
-represents the bias term vector.
+
+where <img src="https://latex.codecogs.com/svg.latex?\mathbf{y}"> is the output vector of the fully connected layer, <img src="https://latex.codecogs.com/svg.latex?\mathbf{x}"> is the input vector, <img src="https://latex.codecogs.com/svg.latex?W"> denotes the matrix includes the weights of the connections between the neurons, and <img src="https://latex.codecogs.com/svg.latex?\mathbf{b}"> represents the bias term vector.
 
 CNN Learning 
 ------------
