@@ -1,6 +1,6 @@
 Appendix A
 =============================
-An appendix is provided below for the manuscript “Convolutional Neural Network based Signal Classification in Real Time”.
+An appendix is provided below regarding convolutional neural networks.
 
 Convolutional Neural Networks
 =============================
