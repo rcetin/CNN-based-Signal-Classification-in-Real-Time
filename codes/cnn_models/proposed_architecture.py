@@ -31,36 +31,6 @@ from tqdm import tqdm
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 import time
 
-'''
-@brief: returns 3D RGB image to 2D grayscale
- '''  
-# def rgb2gray(rgb):
-#     return np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
-
-# def load_data(classes, path, img_width, img_height):
-#     data = []
-#     data_id = []
-#     data_labels = []
-
-#     for fld in classes:        
-#         index = classes.index(fld)  
-#         combined_path = os.path.join(path, fld, '*png')
-#         desc = 'Loading {} files (Index: {})'.format(fld, index, combined_path)
-#         files = glob.glob(combined_path)  
-#         for fl in tqdm(files, desc=desc):       
-#             flbase = os.path.basename(fl)
-            
-#             #   load images
-#             img = cv2.imread(fl)
-#             img = cv2.resize(img, (img_width, img_height), cv2.INTER_LINEAR)
-            
-#             data.append(img)         
-#             data_id.append(flbase)  
-#             data_labels.append(index)             
-
-
-#     return data, data_labels, data_id
-
 def load_image_mat(classes, path, img_width, img_height):
     data = []
     data_id = []
@@ -75,7 +45,6 @@ def load_image_mat(classes, path, img_width, img_height):
             flbase = os.path.basename(fl)
             
             d = plt.imread(fl)
-#            d = d[:,:,0:3] # use if img eis RGB
            
             data.append(d)
             data_id.append(flbase)
@@ -98,38 +67,10 @@ def load_image_mat(classes, path, img_width, img_height):
     
     return data, data_labels, data_id
 
-# def normalize_data(data, data_label, num_classes):
-#     #train_data, train_target, train_id = load_train(classes, train_path, img_width, img_height) 
-#     data = np.array(data, dtype=np.uint8) 
-#     data_label = np.array(data_label, dtype=np.uint8) 
-#     data = data.transpose((0, 1, 2, 3)) 
-#     data = data.astype('float32')
-#     data = data / 255
-#     data_label = np_utils.to_categorical(data_label, num_classes)
-
-#     print('\nShape of data:', data.shape)
-#     return data, data_label
-
-      
 #%%
 def build_classifier(img_width, img_height, num_classes):
     classifier = Sequential()   
 
-
-    # This gives 91% accuracy for 3 class with extended data, 222k trainable params
-#    classifier.add(Conv2D(16, (3, 3), input_shape = (img_height, img_width, 3), kernel_initializer='random_uniform'))
-#    classifier.add(Activation('relu'))    
-#    classifier.add(Conv2D(16, (3, 3), input_shape = (img_height, img_width, 3), kernel_initializer='random_uniform'))
-#    classifier.add(Activation('relu'))
-#    classifier.add(BatchNormalization())
-#    classifier.add(MaxPooling2D(pool_size = (2, 2)))
-
-#    classifier.add(Conv2D(16, (3, 3), input_shape = (img_height, img_width, 3), kernel_initializer='random_uniform'))
-#    classifier.add(Activation('relu'))
-#    classifier.add(Conv2D(16, (3, 3), input_shape = (img_height, img_width, 3), kernel_initializer='random_uniform'))
-#    classifier.add(Activation('relu'))
-#    classifier.add(BatchNormalization())
-#    classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
     classifier.add(Conv2D(16, (3, 3), input_shape=(128, 128, 1), kernel_initializer='random_uniform'))
     classifier.add(BatchNormalization())
@@ -158,46 +99,16 @@ def build_classifier(img_width, img_height, num_classes):
     classifier.add(Activation('relu'))
     classifier.add(Dropout(0.5))#
 
-#    classifier.add(Dense(units = 64, kernel_initializer='random_uniform'))
-#    classifier.add(BatchNormalization())
-#    classifier.add(Activation('relu'))
-#    classifier.add(Dropout(0.5))#
-    
     classifier.add(Dense(units = num_classes, kernel_initializer='random_uniform'))
     classifier.add(BatchNormalization())
     classifier.add(Activation('softmax'))
     ####################################################################
     adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0)
-    sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True) 
     #####################################################################
     classifier.compile(optimizer = adam, loss= 'categorical_crossentropy', metrics = ['accuracy'])
     return classifier
 
 #%%
-from keras.callbacks import EarlyStopping
-from keras.callbacks import Callback
-import warnings
-class EarlyStoppingByAccuracy(Callback):
-    def __init__(self, monitor='accuracy', value=0.98, verbose=0):
-        super(Callback, self).__init__()
-        self.monitor = monitor
-        self.value = value
-        self.verbose = verbose
-
-    def on_epoch_end(self, epoch, logs={}):
-        current = logs.get(self.monitor)
-        if current is None:
-            warnings.warn("Early stopping requires %s available!" % self.monitor, RuntimeWarning)
-
-        if current >= self.value:
-            if self.verbose > 0:
-                print("Epoch %05d: early stopping THR" % epoch)
-            self.model.stop_training = True
-            
-            
-callbacks = [
-    EarlyStoppingByAccuracy(monitor='val_acc', value=0.906, verbose=1),
-]
 
 def run_train(n_folds, train_data, train_target, train_batch_size, nb_epoch, img_width, img_height, num_classes):
     num_fold = 0
@@ -227,12 +138,10 @@ def run_train(n_folds, train_data, train_target, train_batch_size, nb_epoch, img
                       shuffle=True,
                       verbose=1,
                       validation_data=(X_valid, Y_valid))
-                      #callbacks=callbacks)
         
         predictions_valid = classifier.predict(X_valid.astype('float32'), batch_size=train_batch_size, verbose=1)
         score = log_loss(Y_valid, predictions_valid)
         print('Loss for fold {0}: '.format(num_fold), score)
-        #sum_score += score*len(test_index)
         models.append(classifier)
         histories.append(history)
 
@@ -247,8 +156,6 @@ def run_train(n_folds, train_data, train_target, train_batch_size, nb_epoch, img
     
         
     print("Max Accuracy: {}% on fold {}".format(max(model_accs), model_accs.index(max(model_accs))))
-    #score = sum_score/len(train_data)
-    #print("Average loss across folds: ", score)
     info_string = "{0}fold_{1}x{2}_{3}epoch".format(n_folds, img_width, img_height, nb_epoch)
     
     return info_string, models, model_accs.index(max(model_accs)), histories
@@ -359,9 +266,6 @@ def plot_history(histories, key='categorical_crossentropy', plot_type='loss'):
 #%%
 
 #Hyper Parameters
-# trainPath = '/media/rcetin/42375AE8738FEA25/newdata_060819/noiir/data/train' 
-# testPath = '/media/rcetin/42375AE8738FEA25/newdata_060819/noiir/data/test'
-
 trainPath = '/home/selen/Desktop/grayscale_all/grayscale_all_resnet/train' 
 testPath = '/home/selen/Desktop/grayscale_all/grayscale_all_resnet/test'
 
@@ -384,34 +288,12 @@ trainData, trainTarget, trainId = load_image_mat(classes=classNames,
                                             img_height=imgHeight
                                             )
 
-#trainData, trainTarget, trainId = load_data(classes=classNames,
-#                                            path=trainPath,
-#                                            img_width=imgWidth,
-#                                            img_height=imgHeight
-#                                            )
-#
-#trainData, trainTarget = normalize_data(data=trainData,
-#                                        data_label=trainTarget,
-#                                        num_classes=len(classNames)
-#                                        )
-#
 print("Preparing Test Data...")
 testData, testTarget, testId = load_image_mat(classes=classNames,
                                             path=testPath,
                                             img_width=imgWidth,
                                             img_height=imgHeight
                                             )
-
-#testData, testTarget, testId = load_data(classes=classNames,
-#                                            path=testPath,
-#                                            img_width=imgWidth,
-#                                            img_height=imgHeight
-#                                            )
-#
-#testData, testTarget = normalize_data(data=testData,
-#                                        data_label=testTarget,
-#                                        num_classes=len(classNames)
-#                                        )
 
 #%%
 
@@ -436,38 +318,6 @@ model_final.fit(trainData, trainTarget,
               shuffle=True,
               verbose=1)
 
-
-# train model
-# info_string, models, best_index, histories = run_train(n_folds=nFolds, 
-#                                             train_data=trainData, 
-#                                             train_target=trainTarget, 
-#                                             train_batch_size=batchSize, 
-#                                             nb_epoch=nbEpoch, 
-#                                             img_width=imgWidth, 
-#                                             img_height=imgHeight,
-#                                             num_classes=len(classNames)
-#                                             )
-
-# model = models[best_index]
-# model = random.choice(models)
-
-#plot histories
-# plot_history([('', histories[best_index])], plot_type='loss')
-# plot_history([('', histories[best_index])], key='Accuracy (%)', plot_type='acc')
-
-# shuffle test data
-# testData, testTarget = shuffle(testData, testTarget, random_state=0)  
-
-# #make test
-
-# accuracy = print_test_accuracy(test_model=model, 
-#                     test_batch_size=batchSize, 
-#                     sample_test=testData, 
-#                     labels_test=testTarget,
-#                     classes=classNames,
-#                     show_example_errors=False, 
-#                     show_confusion_matrix=True, 
-#                     )  
 
 testData, testTarget = shuffle(testData, testTarget, random_state=0)  
 
@@ -508,8 +358,6 @@ loaded_model = model_from_json(loaded_model_json)
 # load weights into new model
 loaded_model.load_weights("{}.h5".format(path))
 #
-#sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
-#loaded_model.compile(optimizer = sgd, loss= 'categorical_crossentropy', metrics = ['accuracy'])
 print_test_accuracy(test_model=loaded_model, 
                     test_batch_size=batchSize, 
                     sample_test=testData, 
