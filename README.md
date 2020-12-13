@@ -50,7 +50,9 @@ In neural networks, when output data is generated from input data, activation fu
 -   **Rectified Linear Unit (ReLu)** It offers much faster learning than sigmoid and tangent functions because of the simpler mathematical operations. Although it is continuous, it is not differentiable.
 
     <p align="center">
+    <a name="test">
     <img src="https://latex.codecogs.com/svg.latex?\phi%20(z)%20=%20max(0,%20z)">.
+    </a>
     </p>
 
 -   **Softmax function:** It is the type of sigmoid function, and the
@@ -59,12 +61,14 @@ In neural networks, when output data is generated from input data, activation fu
     layer of the proposed architecture, especially for multiclass
     classification problems.
     
+    <a name="test"></a>
+    
     <p align="center">
     <img src="https://latex.codecogs.com/svg.latex?\phi%20(z_i)%20=%20\frac{e^{z_i}}{\sum_{k=1}^{K}%20e^{z_k}},">
     </p>
-
+    
     where <img src="https://latex.codecogs.com/svg.latex?z_i"> is input of the softmax, <img src="https://latex.codecogs.com/svg.latex?i"> is the output index and <img src="https://latex.codecogs.com/svg.latex?K"> is the number of classes.
-
+    
 ### Pooling layer
 
 Another important part of CNNs is the pooling operation. A pooling layer
@@ -109,6 +113,8 @@ parameters because they directly affect classification performance. The
 learning ability of CNNs increases with tuning parameters. In the
 following, we try to answer by explaining the main parts of the CNNs'
 learning mechanism mathematically.
+
+Take me to [test](#test)
 
 ### Cross-Entropy Loss Function
 
