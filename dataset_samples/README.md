@@ -1,6 +1,6 @@
 # Dataset Samples
 
-An example dataset samples are demonstrated in below.
+Example dataset samples are demonstrated in below. These samples are passed through the CNN architecture.
 
 | ![cetin3a.png](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/main/dataset_samples/cetin3a.png) | ![cetin3d.png](https://github.com/rcetin/Convolutional-Neural-Network-based-Signal-Classification-in-Real-Time/blob/main/dataset_samples/cetin3d.png) |
 |:--:| :--:| 
