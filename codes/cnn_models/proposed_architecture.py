@@ -50,18 +50,11 @@ def load_image_mat(classes, path, img_width, img_height):
             data_id.append(flbase)
             data_labels.append(index)
     
-    print("1\n")
-    data = np.array(data, dtype=np.float32)
-    print("data.mean(): ",data.mean())
-    print("data.std(): ",data.std())
-                                                                      
+    data = np.array(data, dtype=np.float32)                                                                      
     data = (data - data.mean()) / data.std()    # Normalization
-    print("3\n")
     data = data[..., None]
 
-    print("4\n")
     data_labels = np.array(data_labels, dtype=np.uint8)
-    print("5\n")
     data_labels = np_utils.to_categorical(data_labels, len(classes))
     print('\nShape of data:', data.shape)
     
